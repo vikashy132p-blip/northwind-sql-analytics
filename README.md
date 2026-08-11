@@ -22,6 +22,17 @@ Advanced SQL Analytics
 Performance Optimization
 ```
 
+## Source Tables
+
+| Table | Rows | Description |
+|---|---:|---|
+| Customers | 91 | Customer contact and location details |
+| Orders | 830 | Order header info (dates, shipping, employee) |
+| Order Details | 2,155 | Line items per order (product, qty, price, discount) |
+| Products | 77 | Product catalog with pricing and stock levels |
+
+Northwind is a small sample dataset — this table is for scale context, not a claim of production-scale data.
+
 ## Project Structure
 
 ```
@@ -80,6 +91,22 @@ All replacements happen via `COALESCE()` in `02_data_cleaning.sql` while buildin
 - Order-level shipping analysis performed using `Clean_Orders` instead of repeatedly deduplicating `FactSales`
 - Shared aggregations calculated once using a temporary table
 - Cleaning and fact-table creation sections drop existing target tables, making the script re-runnable
+
+Northwind is small enough (see Source Tables above) that these optimizations don't produce a measurable difference here — they reflect patterns (indexing, single-pass aggregation, avoiding redundant scans) that matter significantly at production scale on larger tables.
+
+## Sample Results
+
+### Monthly Revenue Trend
+![Monthly Revenue](screenshots/monthly_revenue.png)
+
+### Top 5 Products by Revenue
+![Top Products](screenshots/top_products.png)
+
+### Customer RFM Segmentation
+![RFM Segmentation](screenshots/rfm_segmentation.png)
+
+### Country-Wise Shipping Performance
+![Shipping Performance](screenshots/country_shipping_performance.png)
 
 ## Tech Stack
 
