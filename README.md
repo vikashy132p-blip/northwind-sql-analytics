@@ -97,16 +97,16 @@ Northwind is small enough (see Source Tables above) that these optimizations don
 ## Sample Results
 
 ### Monthly Revenue Trend
-![Monthly Revenue](screenshots/monthly_revenue.png)
+![Monthly Revenue](monthly_revenue.png)
 
 ### Top 5 Products by Revenue
-![Top Products](screenshots/top_products.png)
+![Top Products](top_products.png)
 
 ### Customer RFM Segmentation
-![RFM Segmentation](screenshots/rfm_segmentation.png)
+![RFM Segmentation](rfm_segmentation.png)
 
 ### Country-Wise Shipping Performance
-![Shipping Performance](screenshots/country_shipping_performance.png)
+![Shipping Performance](country_shipping_performance.png)
 
 ## Tech Stack
 
@@ -115,3 +115,4 @@ SQL Server (T-SQL)
 ## SQL Concepts Used
 
 CTEs, window functions, conditional aggregation, ranking functions, self-joins, temporary tables, indexing, data cleaning, feature engineering, and query optimization.
+
