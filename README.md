@@ -143,22 +143,22 @@ Northwind is small enough (see Source Tables above) that these optimizations don
 ### Monthly Revenue Trend
 ![Monthly Revenue](monthly_revenue.png)
 
-Revenue trended [upward/downward/seasonally] across the dataset, with the highest month at [$X] in [Month Year] and the lowest at [$X] in [Month Year].
+Revenue trended upward overall, growing from $27,861.89 in the first full month (July 1996) to a peak of $123,798.66 in April 1998. The running total reached $1,265,792.82 by the end of the recorded period.
 
 ### Top 5 Products by Revenue
 ![Top Products](top_products.png)
 
-[Product Name] is the single highest revenue driver at [$X], accounting for roughly [X]% of total revenue on its own — well ahead of the next closest product.
+Côte de Blaye is the standout revenue driver at $141,396.73 — about $61,028 ahead of the second-place product (Thüringer Rostbratwurst, $80,368.66) and roughly 11% of total recorded revenue on its own.
 
 ### Customer RFM Segmentation
 ![RFM Segmentation](rfm_segmentation.png)
 
-Of [X] customers analyzed, [X] fell into the VIP segment (recent, frequent, high-spend), while [X] were flagged Inactive — customers with no recent orders who may need re-engagement.
+In this sample of the customer base, ERNSH was the only customer to qualify as VIP — 1 day since last order, 30 orders placed, and $104,875 in lifetime spend. Most other customers fell into the Regular or Inactive tiers based on lower recent order activity.
 
 ### Country-Wise Shipping Performance
 ![Shipping Performance](country_shipping_performance.png)
 
-[Country Name] had the highest average shipping delay at [X] days, while [Country Name] shipped fastest at [X] days on average — a gap worth investigating from a logistics standpoint.
+Finland had the fastest average shipping time at 5.59 days, while Ireland was slowest at 11.0 days. The USA had the highest order volume and the most delayed orders (7), despite a relatively low average delay — worth a closer look at outliers driving that gap.
 
 ## Tech Stack
 
