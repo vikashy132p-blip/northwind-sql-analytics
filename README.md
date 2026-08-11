@@ -33,6 +33,50 @@ Performance Optimization
 
 Northwind is a small sample dataset — this table is for scale context, not a claim of production-scale data.
 
+## Schema
+
+```mermaid
+erDiagram
+    CUSTOMERS ||--o{ ORDERS : places
+    EMPLOYEES ||--o{ ORDERS : handles
+    ORDERS ||--|{ ORDER_DETAILS : contains
+    PRODUCTS ||--o{ ORDER_DETAILS : "sold in"
+    CATEGORIES ||--o{ PRODUCTS : categorizes
+
+    CUSTOMERS {
+        string CustomerID PK
+        string CompanyName
+        string Country
+    }
+    ORDERS {
+        int OrderID PK
+        string CustomerID FK
+        int EmployeeID FK
+        date OrderDate
+        date ShippedDate
+        string ShipCountry
+    }
+    ORDER_DETAILS {
+        int OrderID FK
+        int ProductID FK
+        money UnitPrice
+        int Quantity
+        float Discount
+    }
+    PRODUCTS {
+        int ProductID PK
+        string ProductName
+        int CategoryID FK
+        money UnitPrice
+    }
+    EMPLOYEES {
+        int EmployeeID PK
+        string LastName
+    }
+```
+
+`FactSales` (built in the pipeline) flattens this model into one row per `OrderID`-`ProductID` pair, joining all five tables together.
+
 ## Project Structure
 
 ```
@@ -99,14 +143,22 @@ Northwind is small enough (see Source Tables above) that these optimizations don
 ### Monthly Revenue Trend
 ![Monthly Revenue](monthly_revenue.png)
 
+Revenue trended [upward/downward/seasonally] across the dataset, with the highest month at [$X] in [Month Year] and the lowest at [$X] in [Month Year].
+
 ### Top 5 Products by Revenue
 ![Top Products](top_products.png)
+
+[Product Name] is the single highest revenue driver at [$X], accounting for roughly [X]% of total revenue on its own — well ahead of the next closest product.
 
 ### Customer RFM Segmentation
 ![RFM Segmentation](rfm_segmentation.png)
 
+Of [X] customers analyzed, [X] fell into the VIP segment (recent, frequent, high-spend), while [X] were flagged Inactive — customers with no recent orders who may need re-engagement.
+
 ### Country-Wise Shipping Performance
 ![Shipping Performance](country_shipping_performance.png)
+
+[Country Name] had the highest average shipping delay at [X] days, while [Country Name] shipped fastest at [X] days on average — a gap worth investigating from a logistics standpoint.
 
 ## Tech Stack
 
@@ -115,4 +167,3 @@ SQL Server (T-SQL)
 ## SQL Concepts Used
 
 CTEs, window functions, conditional aggregation, ranking functions, self-joins, temporary tables, indexing, data cleaning, feature engineering, and query optimization.
-
